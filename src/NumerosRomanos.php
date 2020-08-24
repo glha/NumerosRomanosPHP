@@ -84,7 +84,8 @@ final class NumerosRomanos
       $numeroRomano[$i]['grupo'] = NumerosRomanos::numeroRomanoGrupo($numeroRomano[$i]['digito'], $numeroRomano[$i]['grandeza']);
       $numeroRomano[$i]['grupo_adjacente'] = NumerosRomanos::numeroRomanoGrupoAdjacente($numeroRomano[$i]['grupo']);
       $numeroRomano[$i]['digito_texto'] = NumerosRomanos::numeroRomanoDigitoTexto($numeroRomano[$i]['grupo'], $numeroRomano[$i]['posicao']);
-      $numeroRomano[$i]['digito_texto_adjacente'] = NumerosRomanos::numeroRomanoPrecisaGrupoAdjacente($numeroRomano[$i]['digito'])?NumerosRomanos::numeroRomanoDigitoTextoAdjacente($numeroRomano[$i]['digito_texto'], $numeroRomano[$i]['grupo_adjacente'], $numeroRomano[$i]['posicao']):"";
+      $numeroRomano[$i]['precisa_adjacente'] = NumerosRomanos::numeroRomanoPrecisaGrupoAdjacente($numeroRomano[$i]['digito']);
+      $numeroRomano[$i]['digito_texto_adjacente'] = $numeroRomano[$i]['precisa_adjacente']?NumerosRomanos::numeroRomanoDigitoTextoAdjacente($numeroRomano[$i]['digito_texto'], $numeroRomano[$i]['grupo_adjacente'], $numeroRomano[$i]['posicao']):"";
       $numeroRomano[$i]['numero_romano'] = $numeroRomano[$i]['digito_texto_adjacente']!=''?$numeroRomano[$i]['digito_texto_adjacente']:$numeroRomano[$i]['digito_texto'];
     }
     $numeroRomanoTexto = "";
