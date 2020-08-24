@@ -55,6 +55,6 @@ final class NumerosRomanosTest extends TestCase {
     $this->assertEquals('IV', numerosRomanos::numeroRomanoDigitoTextoAdjacente('V', 1, -1));
   }
   public function testNumeroRomano(): void {
-    $this->assertEquals('CDX', numerosRomanos::numeroRomano(410));
+    $this->assertEquals('MCDXCVII', numerosRomanos::numeroRomano(1497));
   }
 }

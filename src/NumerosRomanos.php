@@ -38,6 +38,8 @@ final class NumerosRomanos
   static function numeroRomanoLimite($numeroArabico) {
     if ($numeroArabico < 1 || $numeroArabico >= 4000) {
       throw new Exception('Fora do limite');
+    } else {
+      return $numeroArabico;
     }
   }
   static function numeroRomanoUnidade($numeroArabico) {
@@ -77,6 +79,14 @@ final class NumerosRomanos
   }
   static function numeroRomano($numeroArabico) {
     $numeroRomano = array();
+    $numeroRomano[0]['numeroArabico'] =NumerosRomanos::numeroArabico($numeroArabico);
+    $numeroRomano[0]['numeroRomanoLimite'] = NumerosRomanos::numeroRomanoLimite($numeroArabico);
+    if ($numeroRomano[0]['numeroArabico'] !== $numeroArabico) {
+      throw new Exception($numeroRomano['numeroArabico']);
+    }
+    if ($numeroRomano[0]['numeroRomanoLimite'] !== $numeroArabico) {
+      throw new Exception($numeroRomano['numeroRomanoLimite']);
+    }
     for ($i=0;$i<strlen(strval($numeroArabico));$i++) {
       $numeroRomano[$i]['digito'] = NumerosRomanos::numeroRomanoUnidade($numeroArabico / intval(str_pad("1", $i+1, "0", STR_PAD_RIGHT)));
       $numeroRomano[$i]['posicao'] = NumerosRomanos::numeroRomanoPosicao($numeroRomano[$i]['digito']);
